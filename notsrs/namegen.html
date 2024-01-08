@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Name Generator</title>
+</head>
+<body>
+  <h1>Generated Name:</h1>
+  <p id="generated-name"></p>
+  <button onclick="generateName()">Generate Name</button>
+
+  <script>
+    async function generateName() {
+      try {
+        // Fetch first names
+        const firstNamesResponse = await fetch("namegen/first-female-names.txt");
+        const firstNamesText = await firstNamesResponse.text();
+        const firstNames = firstNamesText.split("\n");
+
+        // Fetch last names
+        const lastNamesResponse = await fetch("namegen/last-names.txt");
+        const lastNamesText = await lastNamesResponse.text();
+        const lastNames = lastNamesText.split("\n");
+
+        // Generate a random name
+        const randomFirstIndex = Math.floor(Math.random() * firstNames.length);
+        const randomLastIndex = Math.floor(Math.random() * lastNames.length);
+        const generatedName = firstNames[randomFirstIndex] + " " + lastNames[randomLastIndex];
+
+        // Display the generated name
+        document.getElementById("generated-name").textContent = generatedName;
+      } catch (error) {
+        console.error("Error fetching names:", error);
+        alert("Error fetching names. Please check the files and try again.");
+      }
+    }
+  </script>
+</body>
+</html>
