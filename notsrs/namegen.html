@@ -21,12 +21,12 @@
     async function generateName() {
       try {
         // Fetch first names
-        const firstNamesResponse = await fetch("namegen/first-female-names.txt");
+        const firstNamesResponse = await fetch("namegengn/first-female-names.txt");
         const firstNamesText = await firstNamesResponse.text();
         const firstNames = firstNamesText.split("\n");
 
         // Fetch last names
-        const lastNamesResponse = await fetch("namegen/last-names.txt");
+        const lastNamesResponse = await fetch("namegengn/last-names.txt");
         const lastNamesText = await lastNamesResponse.text();
         const lastNames = lastNamesText.split("\n");
 
