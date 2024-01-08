@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Name Generator</title>
+</head>
+<body>
+  <h1>Generated Name:</h1>
+  <p id="generated-name"></p>
+  <button onclick="generateName()">Generate Name</button>
+
+  <script>
+    function generateName() {
+      // Fetch names from the text files using AJAX or fetch
+      // (Implementation details for AJAX or fetch would go here)
+
+      // Once names are fetched, randomly select a name from each list
+      const firstNames = ["...list of first names from file..."];
+      const lastNames = ["...list of last names from file..."];
+      const randomFirstIndex = Math.floor(Math.random() * firstNames.length);
+      const randomLastIndex = Math.floor(Math.random() * lastNames.length);
+      const generatedName = firstNames[randomFirstIndex] + " " + lastNames[randomLastIndex];
+
+      // Display the generated name
+      document.getElementById("generated-name").textContent = generatedName;
+    }
+  </script>
+</body>
+</html>
