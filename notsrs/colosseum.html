@@ -43,7 +43,7 @@ function submitData() {
         wins: winCount
     };
     
-    fetch('https://173.45.22.47:5000/update_team', { // Ensure this matches the server-side endpoint
+    fetch('http://173.45.22.47:5000/update_team', { // Ensure this matches the server-side endpoint
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
