@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Battle Data</title>
+</head>
+<body>
+
+<h2>Edit BattleData.json</h2>
+
+<form id="editForm">
+    <label for="authKey">Auth Key:</label><br>
+    <input type="text" id="authKey" name="authKey" required><br>
+    
+    <label for="teamName">Team Name:</label><br>
+    <input type="text" id="teamName" name="teamName" required><br>
+    
+    <label for="roleId">Role ID:</label><br>
+    <input type="text" id="roleId" name="roleId" required><br>
+    
+    <label for="trueTeamName">True Team Name:</label><br>
+    <input type="text" id="trueTeamName" name="trueTeamName" required><br>
+    
+    <label for="winCount">Win Count:</label><br>
+    <input type="number" id="winCount" name="winCount" required><br><br>
+    
+    <input type="button" value="Submit" onclick="submitData()">
+</form> 
+
+<script>
+function submitData() {
+    const authKey = document.getElementById('authKey').value;
+    const teamName = document.getElementById('teamName').value;
+    const roleId = document.getElementById('roleId').value;
+    const trueTeamName = document.getElementById('trueTeamName').value;
+    const winCount = document.getElementById('winCount').value;
+    
+    const data = {
+        TEAMNAME: teamName, // Changed to match the server-side expected format
+        RoleID: roleId,
+        TrueName: trueTeamName,
+        wins: winCount
+    };
+    
+    fetch('http://173.45.22.47:5000/update_team', { // Ensure this matches the server-side endpoint
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Auth-Key': authKey // Including the Auth-Key in request headers
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        alert('Team data updated successfully - administrators do !refresh'); // Provide user feedback
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Error updating team data'); // Provide user feedback
+    });
+}
+</script>
+
+</body>
+</html>
