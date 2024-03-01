@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COLOSSEUM ADMIN</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body class="py-5">
+<div class="container">
+    <h2>Add a Team</h2>
+
+    <form id="editForm" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="authKey" class="form-label">Auth Key:</label>
+            <input type="text" class="form-control" id="authKey" name="authKey" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="teamName" class="form-label">Team Name:</label>
+            <input type="text" class="form-control" id="teamName" name="teamName" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="roleId" class="form-label">Role ID:</label>
+            <input type="text" class="form-control" id="roleId" name="roleId" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="trueTeamName" class="form-label">True Team Name:</label>
+            <input type="text" class="form-control" id="trueTeamName" name="trueTeamName" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="winCount" class="form-label">Win Count:</label>
+            <input type="number" class="form-control" id="winCount" name="winCount" required>
+        </div>
+        
+        <button type="button" class="btn btn-primary" onclick="submitData()">Submit</button>
+    </form> 
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+<script>
+function submitData() {
+    const authKey = document.getElementById('authKey').value;
+    const teamName = document.getElementById('teamName').value;
+    const roleId = document.getElementById('roleId').value;
+    const trueTeamName = document.getElementById('trueTeamName').value;
+    const winCount = document.getElementById('winCount').value;
+    
+    const data = {
+        TEAMNAME: teamName,
+        RoleID: roleId,
+        TrueName: trueTeamName,
+        wins: winCount
+    };
+    
+    fetch('https://capi.prodbyabnormal.com/update_team', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Auth-Key': authKey
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        alert('Team data updated successfully - administrators do !refresh');
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Error updating team data');
+    });
+}
+</script>
+
+</body>
+</html>
