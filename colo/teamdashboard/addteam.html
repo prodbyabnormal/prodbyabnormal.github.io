@@ -8,6 +8,7 @@
         function submitForm() {
             const roleId = document.getElementById("roleId").value;
             const teamName = document.getElementById("teamName").value;
+            const mgmtKey = document.getElementById("mgmtKey").value;
             const isDanceTeam = document.getElementById("danceTeam").checked;
             const isProducerTeam = document.getElementById("producerTeam").checked;
             
@@ -15,10 +16,11 @@
                 role_id: roleId,
                 team_name: teamName,
                 dance_team: isDanceTeam,
-                producer_team: isProducerTeam
+                producer_team: isProducerTeam,
+                mgmtKey: mgmtKey
             };
             
-            fetch("http://173.45.22.47/api/addteam", {
+            fetch("http://173.45.22.47/api/team/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -38,6 +40,9 @@
     
     <label for="teamName">Team Name:</label>
     <input type="text" id="teamName" required><br><br>
+
+    <label for="teamName">Management Auth Key:</label>
+    <input type="text" id="mgmtKey" required><br><br>
     
     <label>
         <input type="checkbox" id="danceTeam"> Dance Team
@@ -46,6 +51,7 @@
     <label>
         <input type="checkbox" id="producerTeam"> Producer Team
     </label><br><br>
+    
     
     <button onclick="submitForm()">Submit</button>
 </body>
