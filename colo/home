@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation</title>
+</head>
+<body>
+    <h2>Navigation</h2>
+    <button onclick="location.href='/teamdashboard'">Go to Team Dashboard</button>
+    <button onclick="location.href='/management'">Go to Management</button>
+    <button onclick="location.href='/test'">Go to Test</button>
+</body>
+</html>
