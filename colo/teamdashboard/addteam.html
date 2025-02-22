@@ -9,6 +9,7 @@
             const roleId = document.getElementById("roleId").value;
             const teamName = document.getElementById("teamName").value;
             const mgmtKey = document.getElementById("mgmtKey").value;
+            const userID = document.getElementById("userID").value;
             const isDanceTeam = document.getElementById("danceTeam").checked;
             const isProducerTeam = document.getElementById("producerTeam").checked;
             
@@ -17,7 +18,8 @@
                 team_name: teamName,
                 dance_team: isDanceTeam,
                 producer_team: isProducerTeam,
-                mgmtKey: mgmtKey
+                mgmtKey: mgmtKey,
+                userID: userID
             };
             
             fetch("https://api.prodbyabnormal.com/api/team/add", {
@@ -43,6 +45,10 @@
 
     <label for="teamName">Management Auth Key:</label>
     <input type="text" id="mgmtKey" required><br><br>
+
+
+    <label for="teamName">User ID of the team requestor:</label>
+    <input type="text" id="userID" required><br><br>
     
     <label>
         <input type="checkbox" id="danceTeam"> Dance Team
