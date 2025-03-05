@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Protected Page</title>
+    <script type="text/javascript">
+        function checkPassword() {
+            var password = prompt("Enter Password:");
+            if (password !== "Abnormal#$1") {
+                alert("Incorrect password!");
+                document.body.innerHTML = ""; // Clear content if wrong password
+            }
+        }
+    </script>
+</head>
+<body onload="checkPassword()">
+    <iframe src="dms.html" width="100%" height="800px" style="border:none;"></iframe>
+</body>
+</html>
